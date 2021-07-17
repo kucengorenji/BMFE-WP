@@ -29,20 +29,36 @@ const BOOK_ITEMID = "bookId";
 */
 
 function inputBook(title, author, year) {
+    
+    // add article detail
     const bookTitle = document.createElement("h3");
     bookTitle.innerText = title;
 
-    const bookAuthor = document.createElement("p")
+    const bookAuthor = document.createElement("p");
     bookAuthor.innerText = `Penulis: ${author}`;
 
     const bookYear = document.createElement("p");
     bookYear.innerText = `Tahun: ${year}`
 
-    const textContainer = document.createElement("article");
-    textContainer.classList.add("book_item")
-    textContainer.append(bookTitle, bookAuthor, bookYear);
+    // add action button
+    const greenButton = document.createElement("submit")
+    greenButton.classList.add("green");
+    greenButton.innerText = "Selesain dibaca";
 
-    return textContainer;
+    const redButton = document.createElement("submit")
+    redButton.classList.add("red");
+    redButton.innerText = "Hapus buku";
+
+    const actionContainer = document.createElement("div");
+    actionContainer.classList.add("action")
+    actionContainer.append(greenButton, redButton);
+    
+    // create article element and return
+    const article = document.createElement("article");
+    article.classList.add("book_item")
+    article.append(bookTitle, bookAuthor, bookYear, actionContainer);
+
+    return article;
 
 
 }
