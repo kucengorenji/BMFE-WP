@@ -41,11 +41,11 @@ function inputBook(title, author, year) {
     bookYear.innerText = `Tahun: ${year}`
 
     // add action button
-    const greenButton = document.createElement("submit")
+    const greenButton = document.createElement("button")
     greenButton.classList.add("green");
     greenButton.innerText = "Selesain dibaca";
 
-    const redButton = document.createElement("submit")
+    const redButton = document.createElement("button")
     redButton.classList.add("red");
     redButton.innerText = "Hapus buku";
 
@@ -59,6 +59,15 @@ function inputBook(title, author, year) {
     article.append(bookTitle, bookAuthor, bookYear, actionContainer);
 
     return article;
-
-
 }
+
+
+// hahhahah
+// just try to testing out
+console.log(inputBook("hahhaha", "hahhaha", 2017))
+
+const halo = document.getElementById("incompleteBookshelfList");
+halo.appendChild(inputBook("hahhaha", "hahhaha", 2017))
+halo.appendChild(inputBook("hahhaha", "hahhaha", 2017))
+halo.appendChild(inputBook("hahhaha", "hahhaha", 2017))
+halo.appendChild(inputBook("hahhaha", "hahhaha", 2017))
