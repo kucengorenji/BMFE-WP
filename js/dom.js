@@ -1,5 +1,5 @@
-const UNCOMPLETED_BOOK_ID = "book";
-const COMPLETED_BOOK_ID = "completed-book";
+const UNCOMPLETED_BOOK_LIST_ID = "book";
+const COMPLETED_BOOK_LIST_ID = "completed-book";
 const BOOK_ITEMID = "bookId";
 
 /* 
@@ -60,6 +60,28 @@ function inputBook(title, author, year) {
 
     return article;
 }
+
+function addBook() {
+    const uncompletedBookList = document.getElementById(UNCOMPLETED_BOOK_LIST_ID);
+    const bookTitle = document.getElementById("inputBookTitle").value;
+    const bookAuthor = document.getElementById("inputBookAuthor").value;
+    const bookYear = document.getElementById("inputBookYear").value;
+    const isComplete = document.getElementById("inputBookIsComplete").value;
+
+    const inputLibrary =  inputBook(bookTitle, bookAuthor, bookYear);
+
+    uncompletedBookList.append(inputLibrary);
+}
+
+
+
+
+
+
+
+
+
+
 
 
 // hahhahah
