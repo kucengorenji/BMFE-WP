@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     submitForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        // addBook();
+        addBook();
 
     });
 

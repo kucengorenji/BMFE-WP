@@ -73,6 +73,19 @@ function addBook() {
     uncompletedBookList.append(inputLibrary);
 }
 
+function addToComplete() {
+
+}
+
+function removeFromCompleted() {
+
+}
+
+function undoFromCompleted() {
+
+}
+
+
 
 
 
