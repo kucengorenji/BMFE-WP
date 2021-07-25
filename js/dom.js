@@ -1,36 +1,10 @@
-const UNCOMPLETED_BOOK_LIST_ID = "book";
-const COMPLETED_BOOK_LIST_ID = "completed-book";
+const INCOMPLETED_BOOK_LIST_ID = "incompleteBookshelfList";
+const COMPLETED_BOOK_LIST_ID = "completeBookshelfList";
 const BOOK_ITEMID = "bookId";
 
-/* 
 
-    id: 3657848524,
-    title: "Harry Potter and the Philosopher's Stone",
-    author: "J.K Rowling",
-    year: 1997,
-    isComplete: false,
-
-*/
-
-/*
-
-        
-    <!--            <article class="book_item">-->
-    <!--                <h3>Book Title</h3>-->
-    <!--                <p>Penulis: John Doe</p>-->
-    <!--                <p>Tahun: 2002</p>--
-    <!--                <div class="action">-->
-    <!--                    <button class="green">Selesai dibaca</button>-->
-    <!--                    <button class="red">Hapus buku</button>-->
-    <!--                </div>-->
-    <!--            </article>-->
-        
-
-*/
-
-function inputBook(title, author, year) {
-    
-    // add article detail
+function createBookCard(title, author, year,) {
+    // add article detail element
     const bookTitle = document.createElement("h3");
     bookTitle.innerText = title;
 
@@ -39,11 +13,12 @@ function inputBook(title, author, year) {
 
     const bookYear = document.createElement("p");
     bookYear.innerText = `Tahun: ${year}`
+    
 
-    // add action button
+    // add action button element
     const greenButton = document.createElement("button")
     greenButton.classList.add("green");
-    greenButton.innerText = "Selesain dibaca";
+    greenButton.innerText = "Selesai dibaca";
 
     const redButton = document.createElement("button")
     redButton.classList.add("red");
@@ -61,35 +36,72 @@ function inputBook(title, author, year) {
     return article;
 }
 
-function addBook() {
-    const uncompletedBookList = document.getElementById(UNCOMPLETED_BOOK_LIST_ID);
+function createButton(buttonType, eventListener) {
+    const button = document.createElement("button")
+    button.classList.add(buttonType)
+    button.addEventListener("click", (event) => {
+        eventListener(event)
+    })
+}
+
+const isRead
+
+function isCompleted() {
+    const isComplete = document.getElementById("inputBookIsComplete").value;
+    if (isComplete) {
+        greenButton.innerText = "Selesai dibaca";
+    } else {
+        greenButton.innerText = "Belum dibaca";
+    }
+}
+
+function submitBook() {
+    const uncompletedBookList = document.getElementById(INCOMPLETED_BOOK_LIST_ID);
+    const completedBookList = document.getElement(COMPLETED_BOOK_LIST_ID);
+    // get value from the form
     const bookTitle = document.getElementById("inputBookTitle").value;
     const bookAuthor = document.getElementById("inputBookAuthor").value;
     const bookYear = document.getElementById("inputBookYear").value;
     const isComplete = document.getElementById("inputBookIsComplete").value;
 
-    const inputLibrary =  inputBook(bookTitle, bookAuthor, bookYear);
+    const inputToLibrary =  createBookCard(bookTitle, bookAuthor, bookYear);
+    console.log(inputToLibrary)
 
-    uncompletedBookList.append(inputLibrary);
+    if(isComplete) {
+        addToRead();
+    } else {
+        doneRead();
+    }
+
+    uncompletedBookList.append(inputToLibrary);
 }
 
-function addToComplete() {
+// ======================== unclear yet =============================================
 
+function addToComplete() {
+    const completedBookList = document.getElementById(COMPLETED_BOOK_LIST_ID);
+    const taskTitle = taskElement.querySelector(".inner > h2").innerText;
+    const taskTimestamp = taskElement.querySelector(".inner > p").innerText;
+
+    const newTodo = createBookCard(taskTitle, taskTimestamp, true);
+
+    listCompleted.append(newTodo);
+    taskElement.remove();
 }
 
 function removeFromCompleted() {
-
+    taskElement.remove();
 }
 
 function undoFromCompleted() {
+    const listUncompleted = document.getElementById(UNCOMPLETED_LIST_TODO_ID);
+    const taskTitle = taskElement.querySelector(".inner > h2").innerText;
+    const taskTimestamp = taskElement.querySelector(".inner > p").innerText;
 
+    const newTodo = makeTodo(taskTitle, taskTimestamp, false);
+
+    listUncompleted.append(newTodo);
+    taskElement.remove();
 }
 
-// just try to testing out
-console.log(inputBook("hahhaha", "hahhaha", 2017))
 
-const halo = document.getElementById("incompleteBookshelfList");
-halo.appendChild(inputBook("hahhaha", "hahhaha", 2017))
-halo.appendChild(inputBook("hahhaha", "hahhaha", 2017))
-halo.appendChild(inputBook("hahhaha", "hahhaha", 2017))
-halo.appendChild(inputBook("hahhaha", "hahhaha", 2017))

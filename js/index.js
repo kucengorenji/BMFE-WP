@@ -1,22 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
     
-    const submitForm = document.getElementById("inputBook");
+    const submit = document.getElementById("inputBook");
 
-    submitForm.addEventListener("submit", function (event) {
+    submit.addEventListener("submit", function (event) {
         event.preventDefault();
-        addBook();
+        submitForm(event);
+    })
+});
 
-    });
-
+/*
     if(isStorageExist()) {
         loadDataFromStorage();
     }
 
     document.addEventListener("ondatasaved", () => {
         console.log("Data Berhasil disimpan");
-    })
+    });
     document.addEventListener("ondataloaded", () => {
         refreshDataFromFromLibrary();
-    })
-
+    });
 })
+*/
