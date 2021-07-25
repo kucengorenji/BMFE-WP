@@ -85,19 +85,6 @@ function undoFromCompleted() {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// hahhahah
 // just try to testing out
 console.log(inputBook("hahhaha", "hahhaha", 2017))
 
