@@ -2,8 +2,6 @@ const STORAGE_KEY = "BOOK_LIBRARY";
 
 let library = [];
 
-// simply check the storage key
-
 function isStorageExist() {
     if(typeof(Storage) === undefined){
         alert("Browser tidak mendukung local storage");
@@ -12,9 +10,7 @@ function isStorageExist() {
     return true;
  }
 
-//  ================================ save and load data from localStorage ======================================
-
- function saveData() {
+ function turnToLocalStorage() {
     const parsed = JSON.stringify(library);
     localStorage.setItem(STORAGE_KEY, parsed);
     document.dispatchEvent(new Event("ondatasaved"));
@@ -31,39 +27,33 @@ function isStorageExist() {
     document.dispatchEvent(new Event("ondataloaded"));
  }
 
-//  ========================================================================
-
  function updateDataToStorage() {
     if(isStorageExist())
-        saveData();
+        turnToLocalStorage();
  }
 
-//  =========================================================================
-
- function composeLibraryObject(title, author, year, isCompleted) {
+ function composeLibraryObject(title, author, year, isRead) {
     return {
         id: +new Date(),
         title,
         author,
         year,
-        isCompleted
+        isRead
     };
  }
 
-// ==========================================================================
-
- function findTodo(todoId) {
-    for(todo of todos){
-        if(todo.id === todoId)
-            return todo;
+ function findCard(bookId) {
+    for(card of library){
+        if(card.id === bookId)
+            return card;
     }
     return null;
  }
 
- function findTodoIndex(todoId) {
+ function findCardIndex(bookId) {
     let index = 0
-    for (todo of todos) {
-        if(todo.id === todoId)
+    for (card of library) {
+        if(card.id === bookId)
             return index;
   
         index++;
@@ -72,22 +62,3 @@ function isStorageExist() {
     return -1;
  }
 
-//  ===============================================================
-
-function refreshDataFromFromLibrary() {
-    const listUncompleted = document.getElementById(UNCOMPLETED_LIST_TODO_ID);
-    let listCompleted = document.getElementById(COMPLETED_LIST_TODO_ID);
-  
-  
-    for(todo of todos){
-        const newTodo = makeTodo(todo.task, todo.timestamp, todo.isCompleted);
-        newTodo[TODO_ITEMID] = todo.id;
-  
-  
-        if(todo.isCompleted){
-            listCompleted.append(newTodo);
-        } else {
-            listUncompleted.append(newTodo);
-        }
-    }
- }

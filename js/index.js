@@ -6,9 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
         submitForm(event);
     })
-});
 
-/*
     if(isStorageExist()) {
         loadDataFromStorage();
     }
@@ -20,4 +18,3 @@ document.addEventListener("DOMContentLoaded", function() {
         refreshDataFromFromLibrary();
     });
 })
-*/
