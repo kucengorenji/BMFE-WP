@@ -104,11 +104,13 @@ const selesaiDibaca = (bookCard) => {
 }
 
 const hapusBuku = (bookCard) => {
-    const cardPosition = findCard(bookCard[BOOK_ITEMID]);
-    library.splice(cardPosition, 1);
+    if (confirm("anda yakin ingin menghapus buku dari daftar")) {
+        const cardPosition = findCard(bookCard.parentElement[BOOK_ITEMID]);
+        library.splice(cardPosition, 1);
 
-    bookCard.parentElement.remove();
-    updateDataToStorage();
+        bookCard.parentElement.remove();
+        updateDataToStorage();
+      }     
 }
 
 const belumSelesaiDibaca = (bookCard) => {
